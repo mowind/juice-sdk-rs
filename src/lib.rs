@@ -1,12 +1,19 @@
-pub mod error;
-pub mod helpers;
-pub mod transports;
-pub mod types;
-
+#[macro_use]
 extern crate futures;
 use jsonrpc_core as rpc;
 
+// it needs to be before other modules
+// otherwise the macro for tests is not available.
+#[macro_use]
+pub mod helpers;
+
+pub mod client;
+pub mod error;
+pub mod transports;
+pub mod types;
+
 pub use error::Error;
+pub use error::Result;
 
 pub type RequestId = usize;
 
