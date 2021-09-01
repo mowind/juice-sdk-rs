@@ -42,14 +42,30 @@ impl<T: Transport> Client<T> {
         )
     }
 
-    /// Returns the block details with the given number.
-    pub fn block_by_number(
+    /// Returns the block full details with the given number.
+    pub fn block_by_number_txs(
         &self,
         ledger: String,
         number: BlockNumber,
     ) -> CallFuture<Option<Block<Transaction>>, T::Out> {
         let ledger = helpers::serialize(&ledger);
         let included_txs = helpers::serialize(&true);
+        let number = helpers::serialize(&number);
+
+        CallFuture::new(
+            self.transport
+                .execute("juice_getBlockByNumber", vec![ledger, number, included_txs]),
+        )
+    }
+
+    /// Returns the block details with the given number.
+    pub fn block_by_number(
+        &self,
+        ledger: String,
+        number: BlockNumber,
+    ) -> CallFuture<Option<Block<H256>>, T::Out> {
+        let ledger = helpers::serialize(&ledger);
+        let included_txs = helpers::serialize(&false);
         let number = helpers::serialize(&number);
 
         CallFuture::new(

@@ -1,5 +1,5 @@
 use crate::types::{Address, Bytes, H256, U256, U64};
-use serde::{ser::SerializeStruct, Deserialize, Deserializer, Serialize, Serializer};
+use serde::{ser::SerializeStruct, Deserialize, Serialize, Serializer};
 
 /// The block header type returned from RPC calls.
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

@@ -7,7 +7,7 @@ pub struct Transaction {
     /// Hash
     pub hash: H256,
     /// Nonce
-    pub nonce: Bytes,
+    pub nonce: Option<U64>,
     /// Block hash. None when pending.
     #[serde(rename = "blockHash")]
     pub block_hash: Option<H256>,
