@@ -49,6 +49,7 @@ pub struct Transaction {
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct Receipt {
     /// Transaction hash.
+    #[serde(rename="transactionHash")]
     pub transaction_hash: H256,
     /// Index within the block.
     #[serde(rename = "transactionIndex")]
